@@ -1,0 +1,164 @@
+body {
+  background: linear-gradient(
+    180.3deg,
+    rgb(255, 254, 205) 5.5%,
+    rgb(31, 172, 214) 90.2%
+  );
+  min-width: 750px;
+  /* background-repeat: no-repeat; */
+}
+
+.container {
+  margin: 30px auto;
+  padding: 5%;
+  min-width: 724px;
+
+  display: block;
+  border-radius: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.15);
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* .container-2 {
+  margin: 30px auto;
+  padding: 7%;
+  min-width: 600px;
+
+  display: block;
+  border-radius: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+  font-family: "Roboto Condensed", sans-serif;
+} */
+.search-form {
+  width: 80%;
+  margin: 0px auto;
+}
+
+.button {
+  width: 80%;
+  margin: 0px auto;
+}
+
+.Location-button {
+  display: block;
+  margin: 30px 0px;
+  font-size: 18px;
+
+  /* width: 50%; */
+
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  background-color: rgba(67, 151, 151, 0.726);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 10px 0;
+}
+
+.Location-button:hover {
+  color: #3f3f3f;
+  background-color: rgb(255, 254, 205);
+  cursor: pointer;
+
+  transition: all 200ms ease-in-out;
+}
+
+.card-1 {
+  margin: 15px auto;
+  width: 80%;
+}
+
+.card-2 {
+  margin: 15px auto;
+  width: 80%;
+}
+
+.city {
+  text-align: left;
+  font-weight: bold;
+  font-size: 52px;
+  margin-left: 30px;
+}
+
+.current-day {
+  text-align: left;
+  margin-left: 30px;
+}
+
+.current-temperature {
+  text-align: right;
+  font-size: 72px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.current {
+  text-align: right;
+  font-size: 48px;
+  margin-right: 30px;
+}
+
+.cent-farenheit {
+  text-align: right;
+  font-size: 50px;
+  margin-top: 70px;
+  margin-right: 30px;
+}
+
+.current-weather {
+  text-align: center;
+}
+
+.current-weather-icon {
+  text-align: center;
+  font-size: 130px;
+}
+
+.current-weather-desc {
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 70px;
+  text-align: center;
+}
+
+.future-weather {
+  font-size: 20px;
+}
+
+.future-weather-icons {
+  font-size: 30px;
+}
+
+.conditions {
+  line-height: 0.9;
+  font-size: 24px;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.conditions-fa {
+  line-height: 1.5;
+  font-size: 22px;
+  /* text-align: left; */
+  margin-left: 30px;
+}
+
+#cent-degree {
+  color: white;
+  text-decoration: none;
+}
+
+#far-degree {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.cent-far-selected {
+  font-weight: bold;
+  font-size: larger;
+  color: white;
+  text-decoration: none;
+}
