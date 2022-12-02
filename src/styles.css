@@ -162,3 +162,13 @@ body {
   color: white;
   text-decoration: none;
 }
+
+.credits {
+  text-align: center;
+  margin: 30px auto;
+  color: #244b55;
+}
+
+.credits-ref {
+  color: rgb(255, 254, 205);
+}
