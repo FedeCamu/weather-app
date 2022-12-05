@@ -8,6 +8,10 @@ body {
   /* background-repeat: no-repeat; */
 }
 
+li {
+  list-style: none;
+}
+
 .container {
   margin: 30px auto;
   padding: 5%;
@@ -83,7 +87,8 @@ body {
 
 .current-day {
   text-align: left;
-  margin-left: 30px;
+  margin-left: 0px;
+  font-size: 24px;
 }
 
 .current-temperature {
@@ -132,17 +137,17 @@ body {
 }
 
 .conditions {
-  line-height: 0.9;
+  line-height: 2;
   font-size: 24px;
   text-align: left;
-  margin-left: 30px;
 }
 
 .conditions-fa {
   line-height: 1.5;
   font-size: 22px;
+
   /* text-align: left; */
-  margin-left: 30px;
+  /* margin-left: 30px; */
 }
 
 #cent-degree {

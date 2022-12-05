@@ -86,13 +86,13 @@ function showTemperature(response) {
     response.data.main.temp
   )}ºC`;
 
-  document.querySelector("#current-humidity").innerHTML = `${Math.round(
+  document.querySelector("#current-humidity").innerHTML = `  ${Math.round(
     response.data.main.humidity
   )}%`;
 
   document.querySelector(
     "#current-wind"
-  ).innerHTML = `${response.data.wind.speed}km/h`;
+  ).innerHTML = `  ${response.data.wind.speed}km/h`;
 
   document.querySelector("#current-weather-description").innerHTML =
     response.data.weather[0].main;
@@ -100,7 +100,7 @@ function showTemperature(response) {
     .querySelector("#current-weather-description")
     .innerHTML.toUpperCase();
 
-  document.querySelector("#temp-min-max").innerHTML = `${Math.round(
+  document.querySelector("#temp-min-max").innerHTML = `  ${Math.round(
     response.data.main.temp_min
   )}º | ${Math.round(response.data.main.temp_max)}º`;
 }
