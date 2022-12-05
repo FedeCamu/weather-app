@@ -49,10 +49,6 @@ li {
   margin: 0px auto;
 }
 
-.d-flex {
-  display: flex;
-}
-
 .Location-button {
   display: block;
   margin: 30px 0px;
@@ -89,7 +85,7 @@ li {
 .city {
   text-align: left;
   font-weight: bold;
-  font-size: 52px;
+  font-size: 48px;
   margin-left: 30px;
 }
 
@@ -153,20 +149,10 @@ li {
 .conditions-fa {
   line-height: 1.5;
   font-size: 22px;
+  margin-right: 5px;
 
   /* text-align: left; */
   /* margin-left: 30px; */
-}
-
-#cent-degree {
-  color: white;
-  text-decoration: none;
-}
-
-#far-degree {
-  color: white;
-  text-decoration: none;
-  font-weight: normal;
 }
 
 .cent-far-selected {
@@ -184,4 +170,15 @@ li {
 
 .credits-ref {
   color: rgb(255, 254, 205);
+}
+
+#cent-degree {
+  color: white;
+  text-decoration: none;
+}
+
+#far-degree {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
 }
