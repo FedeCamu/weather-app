@@ -4,8 +4,20 @@
 // **********************************
 // **********************************
 
-function formatDate() {
-  let currentDay = now.getDay();
+function formatDate(timestamp) {
+  let currentDay = new Date(timestamp);
+
+  let currentHour = currentDay.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+
+  let currentMinute = currentDay.getMinutes();
+  if (currentMinute < 10) {
+    currentMinute = `0${currentMinute}`;
+  }
+
+  let today = currentDay.getDay();
 
   let weekDays = [
     "Sunday",
@@ -17,28 +29,11 @@ function formatDate() {
     "Saturday",
   ];
 
-  let today = weekDays[currentDay];
-
-  let currentHour = now.getHours();
-  if (currentHour < 10) {
-    currentHour = `0${currentHour}`;
-  }
-
-  let currentMinute = now.getMinutes();
-  if (currentMinute < 10) {
-    currentMinute = `0${currentMinute}`;
-  }
-
-  return `${today} ${currentHour}:${currentMinute}`;
+  return `${weekDays[today]} ${currentHour}:${currentMinute}`;
 }
 
-let currentDayTime = document.querySelector("#current-day-time");
-
-let now = new Date();
-
-currentDayTime.innerHTML = formatDate(now);
-
-function formatDateCifre() {
+function formatDateCifre(timestamp) {
+  let now = new Date(timestamp);
   let currentYear = now.getFullYear();
 
   let currentMonth = now.getMonth();
@@ -59,22 +54,24 @@ function formatDateCifre() {
   ];
 
   let currentDayOfMonth = now.getDate();
+  if (currentDayOfMonth < 10) {
+    currentDayOfMonth = `0${currentDayOfMonth}`;
+  }
 
   return `${currentYear}-${months[currentMonth]}-${currentDayOfMonth}`;
 }
 
-let currentDate = document.querySelector("#current-date");
-
-currentDate.innerHTML = formatDateCifre(now);
-
 // **********************************
 // **********************************
-// Search engine city - connect to API for city name -  temperature - humidity - wind - description - temp min & Max
+// Search engine city - connect to API for city name  - date and time -  temperature - humidity - wind - description - temp min & Max
 // **********************************
 // **********************************
 
 function showTemperature(response) {
   // console.log(response.data);
+
+  let currentDayTime = document.querySelector("#current-day-time");
+  let currentDate = document.querySelector("#current-date");
 
   document.querySelector("#current-city").innerHTML = response.data.name;
 
@@ -96,6 +93,9 @@ function showTemperature(response) {
   document.querySelector("#temp-min-max").innerHTML = `  ${Math.round(
     response.data.main.temp_min
   )}º | ${Math.round(response.data.main.temp_max)}º`;
+
+  currentDayTime.innerHTML = formatDate(response.data.dt * 1000);
+  currentDate.innerHTML = formatDateCifre(response.data.dt * 1000);
 }
 
 // **********************************
