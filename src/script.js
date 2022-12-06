@@ -78,10 +78,6 @@ function showTemperature(response) {
 
   document.querySelector("#current-city").innerHTML = response.data.name;
 
-  document.querySelector("#current-city").innerHTML = document
-    .querySelector("#current-city")
-    .innerHTML.toUpperCase();
-
   document.querySelector("#current-temp-C").innerHTML = `${Math.round(
     response.data.main.temp
   )}ºC`;
@@ -90,15 +86,12 @@ function showTemperature(response) {
     response.data.main.humidity
   )}%`;
 
-  document.querySelector(
-    "#current-wind"
-  ).innerHTML = `  ${response.data.wind.speed}km/h`;
+  document.querySelector("#current-wind").innerHTML = `  ${Math.round(
+    response.data.wind.speed
+  )}km/h`;
 
   document.querySelector("#current-weather-description").innerHTML =
     response.data.weather[0].main;
-  document.querySelector("#current-weather-description").innerHTML = document
-    .querySelector("#current-weather-description")
-    .innerHTML.toUpperCase();
 
   document.querySelector("#temp-min-max").innerHTML = `  ${Math.round(
     response.data.main.temp_min
