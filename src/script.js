@@ -73,6 +73,8 @@ function showTemperature(response) {
   let currentDayTime = document.querySelector("#current-day-time");
   let currentDate = document.querySelector("#current-date");
 
+  let currentWeatherIcon = document.querySelector("#current-weather-icon");
+
   document.querySelector("#current-city").innerHTML = response.data.name;
 
   document.querySelector("#current-temp-C").innerHTML = `${Math.round(
@@ -96,6 +98,12 @@ function showTemperature(response) {
 
   currentDayTime.innerHTML = formatDate(response.data.dt * 1000);
   currentDate.innerHTML = formatDateCifre(response.data.dt * 1000);
+
+  currentWeatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
+  );
+  currentWeatherIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 // **********************************

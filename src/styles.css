@@ -121,11 +121,6 @@ li {
   text-align: center;
 }
 
-.current-weather-icon {
-  /* text-align: center; */
-  font-size: 130px;
-}
-
 .current-weather-desc {
   font-size: 50px;
   font-weight: bold;
