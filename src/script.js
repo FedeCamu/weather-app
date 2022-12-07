@@ -75,11 +75,13 @@ function showTemperature(response) {
 
   let currentWeatherIcon = document.querySelector("#current-weather-icon");
 
+  celsiusTemperature = response.data.main.temp;
+
   document.querySelector("#current-city").innerHTML = response.data.name;
 
   document.querySelector("#current-temp-C").innerHTML = `${Math.round(
-    response.data.main.temp
-  )}ºC`;
+    celsiusTemperature
+  )}º`;
 
   document.querySelector("#current-humidity").innerHTML = `  ${Math.round(
     response.data.main.humidity
@@ -175,22 +177,24 @@ search("New York");
 function showCentDegreeTemp(event) {
   event.preventDefault();
   let currentTempC = document.querySelector("#current-temp-C");
-  currentTempC.innerHTML = `15º`;
+  currentTempC.innerHTML = `${Math.round(celsiusTemperature)}º`;
   centDegree.classList.add("cent-far-selected");
   farDegree.classList.remove("cent-far-selected");
 }
 
-let centDegree = document.querySelector("#cent-degree");
-
-centDegree.addEventListener("click", showCentDegreeTemp);
-
 function showFarDegreeTemp(event) {
   event.preventDefault();
   let currentTempF = document.querySelector("#current-temp-C");
-  currentTempF.innerHTML = `66º`;
+  currentTempF.innerHTML = `${Math.round((celsiusTemperature * 9) / 5 + 32)}º`;
   farDegree.classList.add("cent-far-selected");
   centDegree.classList.remove("cent-far-selected");
 }
+
+let celsiusTemperature = null;
+
+let centDegree = document.querySelector("#cent-degree");
+
+centDegree.addEventListener("click", showCentDegreeTemp);
 
 let farDegree = document.querySelector("#far-degree");
 
