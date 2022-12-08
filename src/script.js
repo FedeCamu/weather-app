@@ -103,9 +103,10 @@ function showTemperature(response) {
 
   currentWeatherIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   currentWeatherIcon.setAttribute("alt", response.data.weather[0].description);
+  // currentWeatherIcon.setAttribute("width", "160");
 }
 
 // **********************************
