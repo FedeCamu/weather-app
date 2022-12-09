@@ -67,7 +67,8 @@ function formatDateCifre(timestamp) {
 // **********************************
 // **********************************
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -94,13 +95,23 @@ function displayForecast() {
   forecast.innerHTML = forecastHTML;
 }
 
-displayForecast();
-
 // **********************************
 // **********************************
 // Search engine city - connect to API for city name  - date and time -  temperature - humidity - wind - description - temp min & Max
 // **********************************
 // **********************************
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+
+  console.log(apiUrl);
+
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function showTemperature(response) {
   // console.log(response.data);
@@ -142,6 +153,8 @@ function showTemperature(response) {
   );
   currentWeatherIcon.setAttribute("alt", response.data.weather[0].description);
   // currentWeatherIcon.setAttribute("width", "160");
+
+  getForecast(response.data.coord);
 }
 
 // **********************************
@@ -235,5 +248,3 @@ centDegree.addEventListener("click", showCentDegreeTemp);
 let farDegree = document.querySelector("#far-degree");
 
 farDegree.addEventListener("click", showFarDegreeTemp);
-
-displayForecast();
