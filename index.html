@@ -56,7 +56,7 @@
           <div class="row">
             <div class="col-5 p-2">
               <h1 class="city" id="current-city"></h1>
-               <ul>
+              <ul>
                 <li class="current-day" id="current-day-time"></li>
                 <li class="current-day" id="current-date"></li>
               </ul>
@@ -69,10 +69,10 @@
             </div>
           </div>
           <div class="row align-items-center">
-            <div class="col-4 p-2">
-             
-            </div>
-            <div class="col-4 p-2 current-weather d-flex justify-content-center">
+            <div class="col-4 p-2"></div>
+            <div
+              class="col-4 p-2 current-weather d-flex justify-content-center"
+            >
               <img
                 src=""
                 alt="clear"
@@ -123,7 +123,6 @@
               </h1>
             </div>
           </div>
-         
         </div>
       </div>
 
@@ -134,57 +133,12 @@
 // ********************************** -->
       <div>
         <div class="card bg-transparent card-2 shadow border-0">
-          <div class="text-center future-weather">
-            <div class="row row-cols-6">
-              <div class="col">
-                <div class="weather-forecast-day">Thu</div>
-                <div class="future-weather-icons">
-               <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="" width="48">
-              </div>
-             <div class="weather-forecast-temp"> <span class="weather-forecast-min">10º</span> <span class="weather-forecast-max">15º</span></div>
-              </div>
-
-              <!-- <div class="col"> <div class="weather-forecast-day">Thu</div>
-                <div class="future-weather-icons">
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" width="48">
-              </div>
-             <div class="weather-forecast-temp"> <span class="weather-forecast-min">10º</span> <span class="weather-forecast-max">15º</span></div>
-              </div>
-
-              <div class="col"> <div class="weather-forecast-day">Thu</div>
-                <div class="future-weather-icons">
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" width="48">
-              </div>
-              <div class="weather-forecast-temp"> <span class="weather-forecast-min">10º</span> <span class="weather-forecast-max">15º</span></div>
-              </div>
-
-              <div class="col"> <div class="weather-forecast-day">Thu</div>
-                <div class="future-weather-icons">
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" width="48">
-              </div>
-             <div class="weather-forecast-temp"> <span class="weather-forecast-min">10º</span> <span class="weather-forecast-max">15º</span></div>
-              </div>
-
-              <div class="col"> <div class="weather-forecast-day">Thu</div>
-                <div class="future-weather-icons">
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" width="48">
-              </div>
-            <div class="weather-forecast-temp"> <span class="weather-forecast-min">10º</span> <span class="weather-forecast-max">15º</span></div>
-              </div>
-
-              <div class="col"> <div class="weather-forecast-day">Thu</div>
-                <div class="future-weather-icons">
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" width="48">
-              </div>
-           <div class="weather-forecast-temp"> <span class="weather-forecast-min">10º</span> <span class="weather-forecast-max">15º</span></div>
-              </div> -->
-             
-          </div>
+          <div class="weather-forecast text-center" id="forecast">
+            
         </div>
       </div>
 
-
- <!-- // **********************************
+      <!-- // **********************************
 // **********************************
 // FOOTER
 // **********************************
@@ -192,7 +146,8 @@
 
       <footer class="credits">
         This project was coded by
-        <span class="credits-ref"> F.Camuncoli</span> <br> Open-sourced on
+        <span class="credits-ref"> F.Camuncoli</span> <br />
+        Open-sourced on
         <a
           class="credits-ref"
           href="https://github.com/FedeCamu/weather-app"

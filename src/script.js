@@ -63,6 +63,41 @@ function formatDateCifre(timestamp) {
 
 // **********************************
 // **********************************
+//DISPLAY FORECAST
+// **********************************
+// **********************************
+
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              
+              <div class="col-2">
+                <div class="weather-forecast-day">${day}</div>
+                <div class="future-weather-icons">
+               <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="" width="48">
+              </div>
+             <div class="weather-forecast-temp"> <span class="weather-forecast-min">10º</span> <span class="weather-forecast-max">15º</span></div>
+              </div>
+              
+              `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
+displayForecast();
+
+// **********************************
+// **********************************
 // Search engine city - connect to API for city name  - date and time -  temperature - humidity - wind - description - temp min & Max
 // **********************************
 // **********************************
@@ -200,3 +235,5 @@ centDegree.addEventListener("click", showCentDegreeTemp);
 let farDegree = document.querySelector("#far-degree");
 
 farDegree.addEventListener("click", showFarDegreeTemp);
+
+displayForecast();
