@@ -82,8 +82,6 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
 
-  // let days = ["Thu", "Fri", "Sat", "Sun"];
-
   weatherForecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
@@ -92,17 +90,15 @@ function displayForecast(response) {
               
               <div class="col-2">
                 <div class="weather-forecast-day">${formatDay(
-                  forecastDay.dt
+                  forecastDay.time
                 )}</div>
                 <div class="future-weather-icons">
-               <img src="https://openweathermap.org/img/wn/${
-                 forecastDay.weather[0].icon
-               }@2x.png" alt="" width="48">
+               <img src="${forecastDay.condition.icon_url}" alt="" width="48">
               </div>
              <div class="weather-forecast-temp"> <span class="weather-forecast-min">${Math.round(
-               forecastDay.temp.min
+               forecastDay.temperature.minimum
              )}º</span> <span class="weather-forecast-max">${Math.round(
-          forecastDay.temp.max
+          forecastDay.temperature.maximum
         )}º</span></div>
               </div>
               
@@ -123,9 +119,11 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
 
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "5t09f3f74eo3075d13ef8b9d94aa5421";
 
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  let units = "metric";
+
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=${units}`;
 
   console.log(apiUrl);
 
@@ -133,23 +131,21 @@ function getForecast(coordinates) {
 }
 
 function showTemperature(response) {
-  // console.log(response.data);
-
   let currentDayTime = document.querySelector("#current-day-time");
   let currentDate = document.querySelector("#current-date");
 
   let currentWeatherIcon = document.querySelector("#current-weather-icon");
 
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = response.data.temperature.current;
 
-  document.querySelector("#current-city").innerHTML = response.data.name;
+  document.querySelector("#current-city").innerHTML = response.data.city;
 
   document.querySelector("#current-temp-C").innerHTML = `${Math.round(
     celsiusTemperature
   )}ºC`;
 
   document.querySelector("#current-humidity").innerHTML = `  ${Math.round(
-    response.data.main.humidity
+    response.data.temperature.humidity
   )}%`;
 
   document.querySelector("#current-wind").innerHTML = `  ${Math.round(
@@ -157,25 +153,19 @@ function showTemperature(response) {
   )}km/h`;
 
   document.querySelector("#current-weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
 
-  document.querySelector(
-    "#temp-min-max"
-  ).innerHTML = ` <span class="weather-forecast-min"> ${Math.round(
-    response.data.main.temp_min
-  )}º </span><span>${Math.round(response.data.main.temp_max)}º</span>`;
+  document.querySelector("#feels-like").innerHTML = `${Math.round(
+    response.data.temperature.feels_like
+  )}º <span class="real-feel">Real Feel</span>`;
 
-  currentDayTime.innerHTML = formatDate(response.data.dt * 1000);
-  currentDate.innerHTML = formatDateCifre(response.data.dt * 1000);
+  currentDayTime.innerHTML = formatDate(response.data.time * 1000);
+  currentDate.innerHTML = formatDateCifre(response.data.time * 1000);
 
-  currentWeatherIcon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  currentWeatherIcon.setAttribute("alt", response.data.weather[0].description);
-  // currentWeatherIcon.setAttribute("width", "160");
+  currentWeatherIcon.setAttribute("src", `${response.data.condition.icon_url}`);
+  currentWeatherIcon.setAttribute("alt", response.data.condition.icon);
 
-  getForecast(response.data.coord);
+  getForecast(response.data.coordinates);
 }
 
 // **********************************
@@ -185,10 +175,10 @@ function showTemperature(response) {
 // **********************************
 
 function search(city) {
-  // let apiKey = "6bfa54f242cbb59343d4e58db578dc61";
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "5t09f3f74eo3075d13ef8b9d94aa5421";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+  console.log(apiUrl);
 
   axios.get(apiUrl).then(showTemperature);
 }
@@ -215,15 +205,15 @@ function handleSubmit(event) {
 function showPosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  // console.log(lat);
-  // console.log(long);
+  console.log(lat);
+  console.log(long);
 
   let units = "metric";
-  // let apiKey = "6bfa54f242cbb59343d4e58db578dc61";
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+
+  let apiKey = "5t09f3f74eo3075d13ef8b9d94aa5421";
+  let apiUrl = "https://api.shecodes.io/weather/v1/current?";
   axios
-    .get(`${apiUrl}lat=${lat}&lon=${long}&appid=${apiKey}&units=${units}`)
+    .get(`${apiUrl}lon=${long}&lat=${lat}&key=${apiKey}&units=${units}`)
     .then(showTemperature);
 }
 function showCurrentLocationWeather(event) {
@@ -237,35 +227,3 @@ let searchCity = document.querySelector("#search-city");
 searchCity.addEventListener("submit", handleSubmit);
 
 search("New York");
-
-// **********************************
-// **********************************
-// Change C to F and viceversa
-// **********************************
-// **********************************
-
-// function showCentDegreeTemp(event) {
-//   event.preventDefault();
-//   let currentTempC = document.querySelector("#current-temp-C");
-//   currentTempC.innerHTML = `${Math.round(celsiusTemperature)}º`;
-//   centDegree.classList.add("cent-far-selected");
-//   farDegree.classList.remove("cent-far-selected");
-// }
-
-// function showFarDegreeTemp(event) {
-//   event.preventDefault();
-//   let currentTempF = document.querySelector("#current-temp-C");
-//   currentTempF.innerHTML = `${Math.round((celsiusTemperature * 9) / 5 + 32)}º`;
-//   farDegree.classList.add("cent-far-selected");
-//   centDegree.classList.remove("cent-far-selected");
-// }
-
-// let celsiusTemperature = null;
-
-// let centDegree = document.querySelector("#cent-degree");
-
-// centDegree.addEventListener("click", showCentDegreeTemp);
-
-// let farDegree = document.querySelector("#far-degree");
-
-// farDegree.addEventListener("click", showFarDegreeTemp);
