@@ -146,7 +146,7 @@ function showTemperature(response) {
 
   document.querySelector("#current-temp-C").innerHTML = `${Math.round(
     celsiusTemperature
-  )}º`;
+  )}ºC`;
 
   document.querySelector("#current-humidity").innerHTML = `  ${Math.round(
     response.data.main.humidity
@@ -159,9 +159,11 @@ function showTemperature(response) {
   document.querySelector("#current-weather-description").innerHTML =
     response.data.weather[0].main;
 
-  document.querySelector("#temp-min-max").innerHTML = `  ${Math.round(
+  document.querySelector(
+    "#temp-min-max"
+  ).innerHTML = ` <span class="weather-forecast-min"> ${Math.round(
     response.data.main.temp_min
-  )}º | ${Math.round(response.data.main.temp_max)}º`;
+  )}º </span><span>${Math.round(response.data.main.temp_max)}º</span>`;
 
   currentDayTime.innerHTML = formatDate(response.data.dt * 1000);
   currentDate.innerHTML = formatDateCifre(response.data.dt * 1000);
@@ -242,28 +244,28 @@ search("New York");
 // **********************************
 // **********************************
 
-function showCentDegreeTemp(event) {
-  event.preventDefault();
-  let currentTempC = document.querySelector("#current-temp-C");
-  currentTempC.innerHTML = `${Math.round(celsiusTemperature)}º`;
-  centDegree.classList.add("cent-far-selected");
-  farDegree.classList.remove("cent-far-selected");
-}
+// function showCentDegreeTemp(event) {
+//   event.preventDefault();
+//   let currentTempC = document.querySelector("#current-temp-C");
+//   currentTempC.innerHTML = `${Math.round(celsiusTemperature)}º`;
+//   centDegree.classList.add("cent-far-selected");
+//   farDegree.classList.remove("cent-far-selected");
+// }
 
-function showFarDegreeTemp(event) {
-  event.preventDefault();
-  let currentTempF = document.querySelector("#current-temp-C");
-  currentTempF.innerHTML = `${Math.round((celsiusTemperature * 9) / 5 + 32)}º`;
-  farDegree.classList.add("cent-far-selected");
-  centDegree.classList.remove("cent-far-selected");
-}
+// function showFarDegreeTemp(event) {
+//   event.preventDefault();
+//   let currentTempF = document.querySelector("#current-temp-C");
+//   currentTempF.innerHTML = `${Math.round((celsiusTemperature * 9) / 5 + 32)}º`;
+//   farDegree.classList.add("cent-far-selected");
+//   centDegree.classList.remove("cent-far-selected");
+// }
 
-let celsiusTemperature = null;
+// let celsiusTemperature = null;
 
-let centDegree = document.querySelector("#cent-degree");
+// let centDegree = document.querySelector("#cent-degree");
 
-centDegree.addEventListener("click", showCentDegreeTemp);
+// centDegree.addEventListener("click", showCentDegreeTemp);
 
-let farDegree = document.querySelector("#far-degree");
+// let farDegree = document.querySelector("#far-degree");
 
-farDegree.addEventListener("click", showFarDegreeTemp);
+// farDegree.addEventListener("click", showFarDegreeTemp);

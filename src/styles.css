@@ -1,13 +1,13 @@
 body {
   background: linear-gradient(
-    180.3deg,
+    -45deg,
     rgb(255, 254, 205) 5.5%,
     rgb(31, 172, 214) 90.2%
   );
-  /* min-width: 750px; */
+
   max-width: 800px;
   min-width: 600px;
-  /* background-repeat: no-repeat; */
+
   margin: 0 auto;
 }
 
@@ -18,7 +18,7 @@ li {
 .container {
   margin: 35px auto;
   padding: 5%;
-  /* min-width: 724px; */
+
   max-width: 660px;
 
   display: block;
@@ -28,17 +28,6 @@ li {
   font-family: "Roboto Condensed", sans-serif;
 }
 
-/* .container-2 {
-  margin: 30px auto;
-  padding: 7%;
-  min-width: 600px;
-
-  display: block;
-  border-radius: 10px;
-  color: white;
-  background: rgba(0, 0, 0, 0.1);
-  font-family: "Roboto Condensed", sans-serif;
-} */
 .search-form {
   width: 90%;
   margin: 0px auto;
@@ -53,8 +42,6 @@ li {
   display: block;
   margin: 30px 0px;
   font-size: 18px;
-
-  /* width: 50%; */
 
   border-radius: 30px;
   padding: 10px 20px;
@@ -111,12 +98,12 @@ li {
   margin-right: 30px;
 }
 
-.cent-farenheit {
+/* .cent-farenheit {
   /* text-align: right; */
-  font-size: 36px;
-  /* margin-top: 70px; */
-  margin-right: 30px;
-}
+/* font-size: 36px; */
+/* margin-top: 70px; */
+/* margin-right: 30px;
+} */
 
 .current-weather {
   text-align: center;
@@ -170,12 +157,12 @@ li {
   /* margin-left: 30px; */
 }
 
-.cent-far-selected {
+/* .cent-far-selected {
   font-weight: bold;
   font-size: larger;
   color: white;
   text-decoration: none;
-}
+} */
 
 .credits {
   text-align: center;
@@ -187,13 +174,13 @@ li {
   color: rgb(255, 254, 205);
 }
 
-#cent-degree {
+/* #cent-degree {
   color: white;
   text-decoration: none;
-}
+} */
 
-#far-degree {
+/* #far-degree {
   color: white;
   text-decoration: none;
   font-weight: normal;
-}
+} */
